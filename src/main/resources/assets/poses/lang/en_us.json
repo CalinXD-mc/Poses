@@ -1,0 +1,13 @@
+{
+  "keybinds.poses": "Poses",
+  "key.poses.empty_pose": "Empty Pose",
+  "key.poses.item_pose": "Item Pose",
+  "key.poses.block_pose": "Block Pose",
+  "key.poses.bow_and_arrow_pose": "Bow and Arrow Pose",
+  "key.poses.throw_spear_pose": "Throw Spear Pose",
+  "key.poses.crossbow_charge_pose": "Crossbow Charge Pose",
+  "key.poses.crossbow_hold_pose": "Crossbow Hold Pose",
+  "key.poses.spyglass_pose": "Spyglass Pose",
+  "key.poses.toot_horn_pose": "Toot Horn Pose",
+  "key.poses.brush_pose": "Brush Pose"
+}

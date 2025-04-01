@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "dev.cxd.poses.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"PosesToggle"
+	],
+	"client": [
+		"PosesToggle"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

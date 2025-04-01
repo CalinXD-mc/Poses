@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "poses",
+	"version": "${version}",
+	"name": "Poses",
+	"description": "Express yourself like never before in Minecraft! With this mod, your character dynamically strikes poses using the game's built-in arm animations. Whether you're wielding a unique item or simply showing off, your actions will speak louder than words.",
+	"authors": [
+		"CalinXD_!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "ARR",
+	"icon": "assets/poses/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"dev.cxd.poses.Poses"
+		],
+		"client": [
+			"dev.cxd.poses.client.PosesClient"
+		],
+		"fabric-datagen": [
+			"dev.cxd.poses.PosesDataGenerator"
+		]
+	},
+	"mixins": [
+		"poses.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.9",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
