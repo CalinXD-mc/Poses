@@ -2,6 +2,7 @@ package dev.cxd.poses.mixin;
 
 import dev.cxd.poses.client.PosesClient;
 import dev.cxd.poses.index.PosesTags;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -15,56 +16,34 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(PlayerEntityRenderer.class)
 public class PosesToggle {
     @Inject(method = "getArmPose", at = @At("HEAD"), cancellable = true)
-
     private static void MODID$getArmPoseDR(AbstractClientPlayerEntity player, Hand hand, CallbackInfoReturnable<BipedEntityModel.ArmPose> cir) {
+        // Ensure this only applies to the local player
+        if (player != MinecraftClient.getInstance().player) {
+            return;
+        }
+
         ItemStack itemStack = player.getStackInHand(hand);
-        if (!itemStack.isIn(PosesTags.ARMAMENT_COMPAT_TAG)) {
+
+        if (!itemStack.isIn(PosesTags.UNUSABLE_TAG)) {
             if (PosesClient.emptyPose.isPressed()) {
                 cir.setReturnValue(BipedEntityModel.ArmPose.EMPTY);
-            }
-        }
-        if (!itemStack.isIn(PosesTags.ARMAMENT_COMPAT_TAG)) {
-            if (PosesClient.itemPose.isPressed()) {
+            } else if (PosesClient.itemPose.isPressed()) {
                 cir.setReturnValue(BipedEntityModel.ArmPose.ITEM);
-            }
-        }
-        if (!itemStack.isIn(PosesTags.ARMAMENT_COMPAT_TAG)) {
-            if (PosesClient.blockPose.isPressed()) {
+            } else if (PosesClient.blockPose.isPressed()) {
                 cir.setReturnValue(BipedEntityModel.ArmPose.BLOCK);
-            }
-        }
-        if (!itemStack.isIn(PosesTags.ARMAMENT_COMPAT_TAG)) {
-            if (PosesClient.bowAndArrowPose.isPressed()) {
+            } else if (PosesClient.bowAndArrowPose.isPressed()) {
                 cir.setReturnValue(BipedEntityModel.ArmPose.BOW_AND_ARROW);
-            }
-        }
-        if (!itemStack.isIn(PosesTags.ARMAMENT_COMPAT_TAG)) {
-            if (PosesClient.throwSpearPose.isPressed()) {
+            } else if (PosesClient.throwSpearPose.isPressed()) {
                 cir.setReturnValue(BipedEntityModel.ArmPose.THROW_SPEAR);
-            }
-        }
-        if (!itemStack.isIn(PosesTags.ARMAMENT_COMPAT_TAG)) {
-            if (PosesClient.crossbowChargePose.isPressed()) {
+            } else if (PosesClient.crossbowChargePose.isPressed()) {
                 cir.setReturnValue(BipedEntityModel.ArmPose.CROSSBOW_CHARGE);
-            }
-        }
-        if (!itemStack.isIn(PosesTags.ARMAMENT_COMPAT_TAG)) {
-            if (PosesClient.crossbowHoldPose.isPressed()) {
+            } else if (PosesClient.crossbowHoldPose.isPressed()) {
                 cir.setReturnValue(BipedEntityModel.ArmPose.CROSSBOW_HOLD);
-            }
-        }
-        if (!itemStack.isIn(PosesTags.ARMAMENT_COMPAT_TAG)) {
-            if (PosesClient.spyglassPose.isPressed()) {
+            } else if (PosesClient.spyglassPose.isPressed()) {
                 cir.setReturnValue(BipedEntityModel.ArmPose.SPYGLASS);
-            }
-        }
-        if (!itemStack.isIn(PosesTags.ARMAMENT_COMPAT_TAG)) {
-            if (PosesClient.tootHornPose.isPressed()) {
+            } else if (PosesClient.tootHornPose.isPressed()) {
                 cir.setReturnValue(BipedEntityModel.ArmPose.TOOT_HORN);
-            }
-        }
-        if (!itemStack.isIn(PosesTags.ARMAMENT_COMPAT_TAG)) {
-            if (PosesClient.brushPose.isPressed()) {
+            } else if (PosesClient.brushPose.isPressed()) {
                 cir.setReturnValue(BipedEntityModel.ArmPose.BRUSH);
             }
         }
